@@ -129,6 +129,48 @@ MicroBuffer.prototype.writeInt32 = function (value, littleEndian) {
 };
 
 
+MicroBuffer.prototype.readUint8 = function () {
+  var value = this.getUint8(this.offset);
+  this.offset++;
+  return value;
+};
+
+
+MicroBuffer.prototype.readInt8 = function () {
+  var value = this.getUint8(this.offset);
+  this.offset++;
+  return value - 0xFF - 1;
+};
+
+
+MicroBuffer.prototype.readUint16 = function (littleEndian) {
+  var value = this.getUint16(this.offset, littleEndian);
+  this.offset += 2;
+  return value;
+};
+
+
+MicroBuffer.prototype.readInt16 = function (littleEndian) {
+  var value = this.getUint16(this.offset, littleEndian);
+  this.offset += 2;
+  return value - 0xFFFF - 1;
+};
+
+
+MicroBuffer.prototype.readUint32 = function (littleEndian) {
+  var value = this.getUint32(this.offset, littleEndian);
+  this.offset += 4;
+  return value;
+};
+
+
+MicroBuffer.prototype.readInt32 = function (littleEndian) {
+  var value = this.getUint32(this.offset, littleEndian);
+  this.offset += 4;
+  return value - 0xFFFFFFFF - 1;
+};
+
+
 // get current position
 //
 MicroBuffer.prototype.tell = function () {

@@ -104,6 +104,37 @@ describe('MicroBuffer', function () {
   });
 
 
+  it('read numbers', function () {
+    mb = new MicroBuffer([
+      1,
+      0xFF,
+      0xAA, 0x55,
+      0xFF, 0xFE,
+      0xEE, 0x33, 0xAA, 0x55,
+      0xFF, 0xFF, 0xFF, 0xFD
+    ]);
+
+    assert.equal(mb.readUint8(), 1);
+    assert.equal(mb.tell(), 1);
+
+    assert.equal(mb.readInt8(), -1);
+    assert.equal(mb.tell(), 2);
+
+    assert.equal(mb.readUint16(), 0xAA55);
+    assert.equal(mb.tell(), 4);
+
+    assert.equal(mb.readInt16(), -2);
+    assert.equal(mb.tell(), 6);
+
+    assert.equal(mb.readUint32(), 0xEE33AA55);
+    assert.equal(mb.tell(), 10);
+
+    assert.equal(mb.readInt32(), -3);
+    assert.equal(mb.tell(), 14);
+
+  });
+
+
   it('write numbers', function () {
     mb = new MicroBuffer(14);
 

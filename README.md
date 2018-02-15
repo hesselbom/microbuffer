@@ -46,6 +46,12 @@ With position update:
 - `.writeUint32(value, littleEndian)`
 - `.writeInt32(value, littleEndian)`
 - `.writeUint64(value)`
+- `.readUint8()`
+- `.readInt8()`
+- `.readUint16(littleEndian)`
+- `.readInt16(littleEndian)`
+- `.readUint32(littleEndian)`
+- `.readInt32(littleEndian)`
 
 Other:
 
